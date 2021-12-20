@@ -4,11 +4,22 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NewTopicForm
 from .models import Board, Topic, Post
 from django.http import Http404
+from django.http import HttpResponse
 
 
 def home(request):
+    return render(request, 'home.html')
+
+def plans(request):
+    return render(request, 'plans.html')
+
+def products(request):
     boards = Board.objects.all()
-    return render(request, 'home.html', {'boards': boards})
+    return render(request, 'products.html', {'boards': boards})
+
+def contact(request):
+    return render(request, 'contact.html')
+
     
 def board_topics(request, pk):
     board = get_object_or_404(Board, pk=pk)

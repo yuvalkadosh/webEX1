@@ -5,9 +5,9 @@
 {% block title %}Start a New Topic{% endblock %}
 
 {% block breadcrumb %}
-  <li class="breadcrumb-board"><a href="{% url 'home' %}">boards</a></li>
-  <li class="breadcrumb-board"><a href="{% url 'board_topics' board.pk %}">{{ board.name }}</a></li>
-  <li class="breadcrumb-board active">New topic</li>
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Items</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'board_topics' board.pk %}">{{ board.name }}</a></li>
+  <li class="breadcrumb-item active">New topic</li>
 {% endblock %}
 
 {% block content %}

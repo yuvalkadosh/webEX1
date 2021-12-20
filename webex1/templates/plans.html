@@ -13,11 +13,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
+
     
     /* Add a gray background color and some padding to the footer */
     footer {
@@ -29,7 +25,20 @@
       width: 100%; /* Set width to 100% */
       margin: auto;
       min-height:200px;
-  }
+    }
+  img {
+  opacity: 0.5;
+}
+
+  h3 {
+  color: black;
+}
+    p {
+  color: black;
+}
+
+
+
 
   /* Hide the carousel text when the screen is less than 600 pixels wide */
   @media (max-width: 600px) {
@@ -47,25 +56,37 @@
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="{% static 'img/pexels-otavio-fonseca-4665064.jpg' %}" width="30" height="30"  class="d-inline-block align-top" alt="">
+        <img src="{% static 'img/business-g0876f8f0b_1920.jpg' %}" width="30" height="30"  class="d-inline-block align-top" alt="">
         <div class="carousel-caption">
-          <h3>Fast internet. Low price.</h3>
-          <p></p>
+          <h3>Strong internet for 20$ a month</h3>
+          <p>UP TO 200MB</p>
         </div>      
       </div>
 
       <div class="item">
-        <img src="{% static 'img/pexels-josh-sorenson-1714208.jpg' %}" width="30" height="30"  class="d-inline-block align-top" alt="">
+        <img src="{% static 'img/home-office-g8df2888c5_1920.jpg' %}" width="30" height="30"  class="d-inline-block align-top" alt="">
         <div class="carousel-caption">
-          <h3>5G home internet now just $50 a month</h3>
-          <p>For more information click Plans</p>
+          <h3>Powerful internet for 35$ a month</h3>
+          <p>UP TO 500MB</p>
+          <p>Great for people who work from home</p>
         </div>      
       </div>
+
+      <div class="item">
+        <img src="{% static 'img/office-g0db048c60_1920.jpg' %}" width="30" height="30"  class="d-inline-block align-top" alt="">
+        <div class="carousel-caption">
+          <h3>5G home internet now just $50 a month</h3>
+          <p>LIMITED-TIME OFFER</p>
+          <p>Our 5G Wi-Fi Gateway is included at no additional cost and shipping is FREE.</p>
+        </div>      
+      </div>
+
     </div>
 
     <!-- Left and right controls -->
@@ -80,24 +101,20 @@
 </div>
   
 <div class="container text-center">    
-  <h3>Check out now</h3><br>
+  <h3>Why you should join us?</h3><br>
   <div class="row">
     <div class="col-sm-4">
-      <img src="https://images.pexels.com/photos/8066712/pexels-photo-8066712.png?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" class="img-responsive" style="width:100%" alt="Image">
-      <p>Iphone 13 for sale</p>
+      <img src="https://images.pexels.com/photos/159304/network-cable-ethernet-computer-159304.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" class="img-responsive" style="width:100% ; height:auto" alt="Image">
+      <p><strong>Best technology</strong></p>
     </div>
     <div class="col-sm-4"> 
-      <img src="https://images.pexels.com/photos/249538/pexels-photo-249538.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="img-responsive" style="width:100%" alt="Image">
-      <p>Macbook Pro for sale</p>    
+      <img src="https://images.pexels.com/photos/97077/pexels-photo-97077.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" class="img-responsive" style="width:100%; height:auto" alt="Image">
+      <p><strong>Support 24/7</strong></p>
     </div>
-    <div class="col-sm-4">
-      <div class="well">
-       <p>Airpods Pro now for $249.00</p>
+    <div class="col-sm-4"> 
+        <img src="https://cdn.pixabay.com/photo/2018/08/10/05/45/computer-3596169_960_720.jpg" class="img-responsive" style="width:100% ; height:auto" alt="Image">  
+        <p><strong>Powerful wifi router</strong></p>
       </div>
-      <div class="well">
-       <p>Apple watch FROM $399</p>
-      </div>
-    </div>
   </div>
 </div><br>
 
