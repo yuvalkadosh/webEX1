@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import json
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,7 +46,14 @@ INSTALLED_APPS = [
     'boards',
     'widget_tweaks',
     'sslserver',
+    'axes',
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 
 SITE_ID = 1
 
@@ -55,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.AxesMiddleware',
 ]
 
 ROOT_URLCONF = 'webex1.urls'
@@ -93,6 +104,14 @@ DATABASES = {
 }
 
 
+# Import json configuration file
+f = open('config.json')
+
+config_file = json.load(f)
+
+if config_file['complex_categories'] > 4:
+    config_file['complex_categories'] = 4
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -102,6 +121,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': config_file['password_min_length'], }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -112,17 +133,17 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'webex1.validators.HistoryValidator',
         'OPTIONS': {
-            'last_pass_amount': 3, },
+            'last_pass_amount': config_file['last_pass_amount'], },
     },
     {
         'NAME': 'webex1.validators.ComplexValidator',
         'OPTIONS': {
-            'categories_amount': 3, },
+            'categories_amount': config_file['complex_categories'], },
     },
     {
         'NAME': 'webex1.validators.DictValidator',
         'OPTIONS': {
-            'dict_path': 'C:\\temp\\webEX1\\bad_passwords.txt', },
+            'dict_path': config_file['password_dict_path'], },
     },
 
 ]
@@ -169,3 +190,9 @@ EMAIL_HOST_USER = 'testsite_app'
 EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
+
+#Axes
+AXES_ONLY_USER_FAILURES = True
+AXES_COOLOFF_TIME = 1
+AXES_FAILURE_LIMIT = config_file['login_max_retries']
+AXES_RESET_ON_SUCCESS = True

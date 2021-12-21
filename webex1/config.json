@@ -1,0 +1,5 @@
+{"password_min_length": 10,
+ "complex_categories": 3,
+ "last_pass_amount": 3,
+ "password_dict_path":"C:\\temp\\webEX1\\bad_passwords.txt",
+ "login_max_retries": 3}

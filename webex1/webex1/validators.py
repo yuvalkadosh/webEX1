@@ -64,20 +64,18 @@ class HistoryValidator(object):
        self.last_pass_amount = last_pass_amount
 
     def validate(self, password, user=None):
-        isNotValid=True
+        isNotValid=False
 
-        match self.last_pass_amount:
-            case 0:        
-                return True
-            case 4:
-                isNotValid = check_password(password,user.password) or check_password(password,user.password2) or check_password(password,user.password3) or check_password(password,user.password4)
-            case 3:
-                isNotValid = check_password(password,user.password) or check_password(password,user.password2) or check_password(password,user.password3)
-            case 2:        
-                isNotValid = check_password(password,user.password) or check_password(password,user.password2)
-            case 1:        
-                isNotValid = check_password(password,user.password)
-            
+
+
+        if self.last_pass_amount >= 1 and user.password != None:
+            isNotValid = isNotValid or check_password(password,user.password)
+        if self.last_pass_amount >= 2 and user.password2 != None:
+            isNotValid = isNotValid or check_password(password,user.password2)
+        if self.last_pass_amount >= 3 and user.password3 != None:
+            isNotValid = isNotValid or check_password(password,user.password3)
+        if self.last_pass_amount >= 4 and user.password4 != None:
+            isNotValid = isNotValid or check_password(password,user.password4)    
 
         if isNotValid:
             raise ValidationError(
