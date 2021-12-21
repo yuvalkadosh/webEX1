@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'accounts',
     'boards',
     'widget_tweaks',
+    'sslserver'
 ]
 
 SITE_ID = 1
@@ -139,6 +140,8 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SECURE_SSL_REDIRECT = True
 
 LOGIN_REDIRECT_URL = 'home'
 

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NewTopicForm
-from .models import Board, Topic, Post
+from .models import Item, Topic, Post
 from django.http import Http404
 from django.http import HttpResponse
 
@@ -14,7 +14,7 @@ def plans(request):
     return render(request, 'plans.html')
 
 def products(request):
-    boards = Board.objects.all()
+    boards = Item.objects.all()
     return render(request, 'products.html', {'boards': boards})
 
 def contact(request):
@@ -22,11 +22,11 @@ def contact(request):
 
     
 def board_topics(request, pk):
-    board = get_object_or_404(Board, pk=pk)
+    board = get_object_or_404(Item, pk=pk)
     return render(request, 'topics.html', {'board': board})
 
 def new_topic(request, pk):
-    board = get_object_or_404(Board, pk=pk)
+    board = get_object_or_404(Item, pk=pk)
     user = User.objects.first()  # TODO: get the currently logged in user
     if request.method == 'POST':
         form = NewTopicForm(request.POST)
