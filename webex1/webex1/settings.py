@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -44,7 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'boards',
     'widget_tweaks',
-    'sslserver'
+    'sslserver',
 ]
 
 SITE_ID = 1
@@ -111,6 +109,22 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+    {
+        'NAME': 'webex1.validators.HistoryValidator',
+        'OPTIONS': {
+            'last_pass_amount': 3, },
+    },
+    {
+        'NAME': 'webex1.validators.ComplexValidator',
+        'OPTIONS': {
+            'categories_amount': 3, },
+    },
+    {
+        'NAME': 'webex1.validators.DictValidator',
+        'OPTIONS': {
+            'dict_path': 'C:\\temp\\webEX1\\bad_passwords.txt', },
+    },
+
 ]
 
 

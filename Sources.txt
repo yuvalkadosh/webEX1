@@ -1,0 +1,5 @@
+SSL - 
+https://medium.com/@millienakiganda/creating-an-ssl-certificate-for-localhost-in-django-framework-45290d905b88
+
+Custom Password Validators - 
+https://sixfeetup.com/blog/custom-password-validators-in-django
