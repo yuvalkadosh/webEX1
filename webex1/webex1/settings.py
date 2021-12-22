@@ -116,30 +116,37 @@ if config_file['complex_categories'] > 4:
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
+    #checks the similarity between the password and a set of attributes of the user.
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
+    #the password meets a minimum length.
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
         'OPTIONS': {
             'min_length': config_file['password_min_length'], }
     },
+    #checks whether the password occurs in a list of common passwords.
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
+    #checks whether the password isn’t entirely numeric.
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+    #checks the passwords history
     {
         'NAME': 'webex1.validators.HistoryValidator',
         'OPTIONS': {
             'last_pass_amount': config_file['last_pass_amount'], },
     },
+    #checks the password complexity
     {
         'NAME': 'webex1.validators.ComplexValidator',
         'OPTIONS': {
             'categories_amount': config_file['complex_categories'], },
     },
+    #checks the password isnt from the dictionary
     {
         'NAME': 'webex1.validators.DictValidator',
         'OPTIONS': {

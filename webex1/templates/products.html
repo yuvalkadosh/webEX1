@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block breadcrumb %}
-  <li class="breadcrumb-item active">Items</li>
+  <li class="breadcrumb-item active">Products</li>
 {% endblock %}
 
 {% block content %}
@@ -10,8 +10,6 @@
 <div class="container">
     <div class="row">
     {% for board in boards %}
-    
-  
     <div class="col col-md-4">
       <div class="column">
     <div class="card" style="width: 18rem;">
@@ -30,9 +28,6 @@
     </div>
   </div>
 </div>
-
-
-
     {% endfor %}
   </div>
 </div>

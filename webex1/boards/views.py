@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NewTopicForm
-from .models import Item, Topic, Post
+from .models import Item, Plan, Topic, Post
 from django.http import Http404
 from django.http import HttpResponse
 
@@ -11,7 +11,8 @@ def home(request):
     return render(request, 'home.html')
 
 def plans(request):
-    return render(request, 'plans.html')
+    plans = Plan.objects.all()
+    return render(request, 'plans.html', {'plans': plans})
 
 def products(request):
     boards = Item.objects.all()
