@@ -5,7 +5,7 @@ from .forms import NewTopicForm
 from .models import Item, Plan, Topic, Post
 from django.http import Http404
 from django.http import HttpResponse
-
+from django.db import connection
 
 def home(request):
     return render(request, 'home.html')
@@ -23,11 +23,18 @@ def contact(request):
 
 def search(request):
     searched = request.POST['searched']
-    items = Item.objects.filter(name__contains=searched)
+    
+    # Bad Search
+    items = Item.objects.raw("SELECT * FROM boards_item WHERE name ='"+ searched + "'")
+    
+    # Good Search
+    #items = Item.objects.filter(name__contains=searched)
+    #items = Item.objects.raw("SELECT * FROM boards_item WHERE name =%s",[searched])
+
     return render(request, 'search.html', {'searched':searched,'items':items})
 
 
-    
+
 def board_topics(request, pk):
     board = get_object_or_404(Item, pk=pk)
     return render(request, 'topics.html', {'board': board})
