@@ -21,10 +21,17 @@ def products(request):
 def contact(request):
     return render(request, 'contact.html')
 
+def search(request):
+    searched = request.POST['searched']
+    items = Item.objects.filter(name__contains=searched)
+    return render(request, 'search.html', {'searched':searched,'items':items})
+
+
     
 def board_topics(request, pk):
     board = get_object_or_404(Item, pk=pk)
     return render(request, 'topics.html', {'board': board})
+
 
 def new_topic(request, pk):
     board = get_object_or_404(Item, pk=pk)
@@ -33,7 +40,7 @@ def new_topic(request, pk):
         form = NewTopicForm(request.POST)
         if form.is_valid():
             topic = form.save(commit=False)
-            topic.board = board
+            topic.item = board
             topic.starter = user
             topic.save()
             post = Post.objects.create(
@@ -45,3 +52,7 @@ def new_topic(request, pk):
     else:
         form = NewTopicForm()
     return render(request, 'new_topic.html', {'board': board, 'form': form})
+
+
+
+

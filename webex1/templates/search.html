@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<center>
+
+{% if searched %}
+    <h1>You Searched For : {{searched}}</h1>
+    <br/>
+    {%for item in items%}
+    <div class="col col-md-4">
+        <div class="column">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ item.image_url}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</a></h5>
+          <p class="card-text"><small class="text-muted d-block">{{ item.description}}</small></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">In stock: {{ item.stock}}</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">${{ item.price}}</a>
+          <a href="#" class="card-link">Buy now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    <br/>
+    {%endfor%}
+{%else%}
+    <h1>You Forgot To Search...</h1>
+{%endif%}
+
+
+</center>
+
+{% endblock %}

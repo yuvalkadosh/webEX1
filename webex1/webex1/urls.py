@@ -13,6 +13,9 @@ urlpatterns = [
     url(r'^plans/$', views.plans, name='plans'),
     url(r'^products/$', views.products, name='products'),
     url(r'^contact/$', views.contact, name='contact'),
+    url(r'^products/(?P<pk>\d+)/$', views.board_topics, name='board_topics'),
+    url(r'^products/(?P<pk>\d+)/new/$', views.new_topic, name='new_topic'),
+    url(r'^search/$', views.search, name='search'),
     url(r'^signup/$', accounts_views.signup, name='signup'),
     url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
@@ -40,7 +43,7 @@ urlpatterns = [
         auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'),
         name='password_reset_complete'),
 
-    url(r'^boards/(?P<pk>\d+)/$', views.board_topics, name='board_topics'),
-    url(r'^boards/(?P<pk>\d+)/new/$', views.new_topic, name='new_topic'),
+    url(r'^products/(?P<pk>\d+)/$', views.board_topics, name='board_topics'),
     url(r'^admin/', admin.site.urls),
+
 ]
