@@ -3,3 +3,9 @@ https://medium.com/@millienakiganda/creating-an-ssl-certificate-for-localhost-in
 
 Custom Password Validators - 
 https://sixfeetup.com/blog/custom-password-validators-in-django
+
+
+<script>alert("hello")</script>
+
+comunicationltd10@gmail.com
+Aa12354678!
