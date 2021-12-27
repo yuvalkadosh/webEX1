@@ -9,3 +9,11 @@ https://sixfeetup.com/blog/custom-password-validators-in-django
 
 comunicationltd10@gmail.com
 Aa12354678!
+
+SELECT * FROM products WHERE category = '' or '1' = '1'--' AND released = 1
+
+
+XSS:
+django משתמש בקידוד unicode ובUTF-8  ביי דיפולט בכל מקום והוא מאלץ קידוד לפני ביצוע החלפה\המרה במשתנים בטמפלייטס אבל היא עדיין נותנת למפתחים אופציה לשנות את הקידוד כמו למשל:
+| safe:
+מבטל את הHTML אסקייפ האוטומטי. (HTML אסקייפ מחליף תווים מיוחדים בתווים אחרים )

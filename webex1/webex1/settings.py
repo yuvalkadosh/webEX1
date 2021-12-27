@@ -106,7 +106,6 @@ DATABASES = {
 
 # Import json configuration file
 f = open('config.json')
-
 config_file = json.load(f)
 
 if config_file['complex_categories'] > 4:

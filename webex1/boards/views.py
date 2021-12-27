@@ -24,7 +24,7 @@ def contact(request):
 def search(request):
     searched = request.POST['searched']
     
-    # Bad Search
+    # Bad Search - SQL injection
     items = Item.objects.raw("SELECT * FROM boards_item WHERE name ='"+ searched + "'")
     
     # Good Search
