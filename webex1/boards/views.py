@@ -42,7 +42,7 @@ def board_topics(request, pk):
 
 def new_topic(request, pk):
     board = get_object_or_404(Item, pk=pk)
-    user = User.objects.first()  # TODO: get the currently logged in user
+    user = User.objects.first()  
     if request.method == 'POST':
         form = NewTopicForm(request.POST)
         if form.is_valid():
@@ -55,7 +55,7 @@ def new_topic(request, pk):
                 topic=topic,
                 created_by=user
             )
-            return redirect('board_topics', pk=board.pk)  # TODO: redirect to the created topic page
+            return redirect('board_topics', pk=board.pk)  
     else:
         form = NewTopicForm()
     return render(request, 'new_topic.html', {'board': board, 'form': form})

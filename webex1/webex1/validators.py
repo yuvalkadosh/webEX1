@@ -75,3 +75,19 @@ class HistoryValidator(object):
         return _(
             "The password must be different then last passwords!"
         )
+
+class UsernameValidator(object):
+    def __init__(self, last_pass_amount=1):
+       self.last_pass_amount = last_pass_amount
+    def validate(self, password, user=None):
+        isNotValid = False
+
+        if isNotValid:
+            raise ValidationError(
+                _("The password must be different then last passwords!"),
+                code='password_not_different_then_last',
+            )
+    def get_help_text(self):
+        return _(
+            "The password must be different then last passwords!"
+        )
